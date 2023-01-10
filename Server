@@ -27,11 +27,12 @@ while true; do
 
     [ -x "${DEMO}/Boot" ] || continue
 
-    AUTHOR=$(cd "${DEMO}" && git log -1 --pretty %an)
+    AUTHOR=$(cd "${DEMO}" && git log -1 --pretty=%an)
     NAME=$(basename "${DEMO}")
 
     ${ROOT}/advertise "${AUTHOR}" "${NAME}"
 
+    echo "Starting ${DEMO}"
     (cd "${DEMO}" && timeout --kill-after=${TIMEOUT} ./Boot)
 
   done
