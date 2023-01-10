@@ -1,0 +1,9 @@
+#!/bin/bash
+
+touch /tmp/demo_data.txt
+
+while true; do
+  cat /tmp/demo_data.txt
+  sleep 10
+
+done

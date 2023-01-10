@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Settings
+TIMEOUT=60
+
+
+######
+
+
+
+ROOT=$(cd $(dirname "$0") && pwd)
+cd ${ROOT} || exit 1
+
+
+
+# Make sure our starting state is fresh and clean
+${ROOT}/refresh
+
+while true; do
+
+  # Refresh in the background while we're running
+  ${ROOT}/refresh &
+  REFRESH_PID=$!
+
+
+  for DEMO in ${ROOT}/*/; do
+
+    [ -x "${DEMO}/Boot" ] || continue
+
+    AUTHOR=$(cd "${DEMO}" && git log -1 --pretty %an)
+    NAME=$(basename "${DEMO}")
+
+    ${ROOT}/advertise "${AUTHOR}" "${NAME}"
+
+    (cd "${DEMO}" && timeout --kill-after=${TIMEOUT} ./Boot)
+
+  done
+
+
+  # Hopefully, all demos are built by now
+  wait $REFRESH_PID
+
+done
+

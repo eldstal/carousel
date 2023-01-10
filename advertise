@@ -1,6 +1,12 @@
 #!/bin/bash
+# Called whenever a new demo is put on screen
+ROOT=$(cd $(dirname "$0") && pwd)
 
-while true; do
-  echo ">< FISHY BUSINESS >< by @eldstal >< http://github.com/eldstal/carousel ><"
-  sleep 3
-done
+AUTHOR="${1}"
+DEMO="${2}"
+
+REPO=$(cd ${ROOT} && git config --get remote.origin.url)
+
+
+echo ">< ${DEMO} >< by ${AUTHOR} >< ${REPO} ><" > /tmp/demo_data.txt
+
