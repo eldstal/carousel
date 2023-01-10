@@ -41,7 +41,7 @@ The server will make a best effort to build demos before they run, to reduce the
 Install raspbian 32-bit on a Raspberry Pi 4 (probably works fine with older ones, too)
 
 ```
-sudo apt install python3 vim git build-essential i3 dmenu
+sudo apt install python3 vim git build-essential i3 dmenu xdotool
 sudo update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 95
 sudo update-alternatives --set x-session-manager /usr/bin/i3
 git clone https://github.com/eldstal/carousel.git ~/carousel
@@ -63,6 +63,7 @@ for_window [workspace="1"] border pixel 1
 
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s off
+exec --no-startup-id xdotool mousemove --sync 9999 9999
 
 
 
