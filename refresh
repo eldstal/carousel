@@ -5,7 +5,7 @@ cd ${ROOT} || exit 1
 
 git pull
 
-for DEMO in ${ROOT}*/; do
+for DEMO in ${ROOT}/*/; do
   [ -d "${DEMO}" ] || continue
 
   [ -x "${DEMO}/Setup" ] || continue
