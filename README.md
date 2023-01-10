@@ -10,6 +10,17 @@ A collaborative graphics demo playground
 5. Commit and push to the `main` branch!
 6. Your demo will run on the server, eventually
 
+# Demo format
+- Mandatory executable: `Boot`
+  - Run to start your demo.
+  - Started in your demo directory
+  - Should open an X window and do something in it.
+- Optional executable: `Setup`
+  - Run after the repository has been fetched
+  - Should run fast if all prerequisites are in place
+- Optional text file: `Credits`
+  - Contains an author name, if you want to display something other than the git history
+
 # How to run
 1. Fork this repo
 2. Give your players commit access to the fork

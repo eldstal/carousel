@@ -28,6 +28,9 @@ while true; do
     [ -x "${DEMO}/Boot" ] || continue
 
     AUTHOR=$(cd "${DEMO}" && git log -1 --pretty=%an)
+
+    [ -r "${DEMO}/Credits" ] && AUTHOR=$(head -n 1 ${DEMO}/Credits)
+
     NAME=$(basename "${DEMO}")
 
     ${ROOT}/advertise "${AUTHOR}" "${NAME}"
