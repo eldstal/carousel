@@ -18,6 +18,8 @@ ${ROOT}/refresh
 
 while true; do
 
+  git pull
+
   # Refresh in the background while we're running
   ${ROOT}/refresh &
   REFRESH_PID=$!
