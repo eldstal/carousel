@@ -1,0 +1,11 @@
+#!/bin/bash
+
+function get_tic80 {
+  wget https://github.com/nesbox/TIC-80/releases/download/v1.0.2164/tic80-v1.0-rpi.deb -O tic80.deb
+  sudo dpkg -i tic80.deb
+}
+
+which tic80 || get_tic80
+
+# Cart from https://tic80.com/play?cart=3112
+# Created by Nusan and TheAnarchyDice
