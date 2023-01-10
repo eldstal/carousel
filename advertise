@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while true; do
+  echo ">< FISHY BUSINESS >< by @eldstal >< http://github.com/eldstal/carousel ><"
+  sleep 3
+done
