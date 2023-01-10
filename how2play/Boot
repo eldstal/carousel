@@ -1,0 +1,3 @@
+#!/bin/bash
+
+urxvt -fg rgba:ffff/ffff/ffff/ffff -bg rgba:0000/0000/0000/ffff +sb -e ./run.sh
