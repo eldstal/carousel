@@ -1,9 +1,22 @@
 #!/bin/bash
 
-touch /tmp/demo_data.txt
+DATAFILE=/tmp/demo_data.txt
 
-while true; do
-  cat /tmp/demo_data.txt
-  sleep 10
+touch ${DATAFILE}
 
-done
+if which inotifywait &>/dev/null; then
+  # Fast and efficient, only update when the file changes
+  # install inotify-tools to make this workS
+  cat "${DATAFILE}"
+
+  while inotifywait --quiet "$DATAFILE" &>/dev/null; do
+    cat "${DATAFILE}"
+  done
+
+else 
+  # Slow and portable, just poll the file
+  while true; do
+    cat "${DATAFILE}"
+    sleep 5
+  done
+fi
