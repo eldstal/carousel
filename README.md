@@ -34,3 +34,53 @@ For the best results, use a window manager that automatically full-screens new a
 The Server will pull the repo periodically, and then cycle through each of the demo directories. Each demo, in turn, will run for a fixed amount of time (or until it finishes) before the next one is run.
 
 The server will make a best effort to build demos before they run, to reduce the delay between demos.
+
+
+
+# raspbian setup
+Install raspbian 32-bit on a Raspberry Pi 4 (probably works fine with older ones, too)
+
+```
+sudo apt install python3 vim git build-essential i3 dmenu
+sudo update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/i3 95
+sudo update-alternatives --set x-session-manager /usr/bin/i3
+git clone https://github.com/eldstal/carousel.git ~/carousel
+```
+
+Set the following in `~/.config/i3/config/`:
+
+```
+
+font pango:monospace 14
+
+# Carousel settings
+workspace_layout tabbed
+title_align center
+
+# Hide window decorations on workspace 1
+hide_edge_borders smart
+for_window [workspace="1"] border pixel 1
+
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s off
+
+
+
+bar {
+    status_command ~/carousel/current
+
+    colors {
+      background #000000
+      statusline #C1A23D
+      separator  #666666
+
+      focused_workspace  #88732B #C1A23D #000000
+      active_workspace   #333333 #222222 #FFFFFF
+      inactive_workspace #333333 #222222 #888888
+      urgent_workspace   #2F343A #900000 #FFFFFF
+      binding_mode       #2F343A #900000 #FFFFFF
+    }
+}
+
+
+```
