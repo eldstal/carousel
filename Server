@@ -33,7 +33,7 @@ while true; do
     ${ROOT}/advertise "${AUTHOR}" "${NAME}"
 
     echo "Starting ${DEMO}"
-    (cd "${DEMO}" && timeout --kill-after=${TIMEOUT} ./Boot)
+    (cd "${DEMO}" && timeout --kill-after=${TIMEOUT} ${TIMEOUT} ./Boot)
 
   done
 
