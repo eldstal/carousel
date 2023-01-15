@@ -12,7 +12,7 @@ for DEMO in ${ROOT}/*/; do
 
   (
     cd "${DEMO}" &&
-    ./Setup
+    timeout --kill-after=120 90 ./Setup
   )
 done
 
