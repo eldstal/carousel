@@ -6,6 +6,7 @@ TIMEOUT=${TIMEOUT:-60}
 
 ######
 
+SOFT_TIMEOUT=$((${TIMEOUT}-5))
 
 
 ROOT=$(cd $(dirname "$0") && pwd)
@@ -38,7 +39,7 @@ while true; do
     ${ROOT}/advertise "${AUTHOR}" "${NAME}"
 
     echo "Starting ${DEMO}"
-    (cd "${DEMO}" && timeout --kill-after=${TIMEOUT} ${TIMEOUT} ./Boot)
+    (cd "${DEMO}" && timeout --kill-after=${TIMEOUT} ${SOFT_TIMEOUT} ./Boot)
 
   done
 
